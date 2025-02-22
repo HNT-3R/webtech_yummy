@@ -4,7 +4,10 @@ import Navbar from "@/components/Navbar.vue";
 import TopBanner from "@/components/TopBanner.vue";
 import ContactItem from "@/components/ContactItem.vue";
 import SimpleText from "@/components/SimpleText.vue";
+
+
 </script>
+
 
 <template>
   <Navbar />

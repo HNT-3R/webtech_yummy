@@ -1,13 +1,11 @@
 <script setup>
   import Splashscreen from "@/components/Splashscreen.vue";
+  import router from "@/router/index.js";
 
   const loadTimeout = setTimeout(changePage, 2000);
 
   function changePage() {
-    let currURL = window.location.href;
-    let splitURL = currURL.split("/");
-
-    window.open("http://localhost:5173/")
+    router.push('/');
   }
 
 </script>
@@ -35,5 +33,16 @@
     border-style: solid;
     border-width: 10px;
     border-color: #38ac79;
+  }
+
+  .fadeout {
+    animation: fadeout 2s forwards;
+  }
+
+  @keyframes fadeout {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
   }
 </style>
