@@ -5,24 +5,26 @@ import TopBanner from "@/components/TopBanner.vue";
 import PanelChooser from "@/components/PanelChooser.vue";
 import SimpleText from "@/components/SimpleText.vue";
 import SupportIcon from "@/components/icons/IconSupport.vue";
+import {RouterLink} from "vue-router";
 </script>
 
 <template>
   <Navbar />
   <TopBanner />
-  <div id="main-body">
+  <body>
     <PanelChooser />
     <SimpleText>
       <template #heading>Unterstüze dieses Projekt!</template>
       Alle 36500 Tage stirbt ein Barack Obama. <br>
       Wenn Sie dies verhindern möchten, spenden Sie an unsere Organisation "Obamas without borders" und helfen Sie dabei eine bessere Welt zu erschaffen.
+      <RouterLink to="/load">Load</RouterLink>
     </SimpleText>
 
-  </div>
+  </body>
 </template>
 
 <style scoped>
-  #main-body {
+  body {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -33,5 +35,6 @@ import SupportIcon from "@/components/icons/IconSupport.vue";
     border-style: solid;
     border-width: 5px;
     border-color: #00a463;
+    margin: 0px;
   }
 </style>

@@ -1,21 +1,33 @@
 <script setup>
 
+window.onscroll = function() {scrollFunction()};
+
+/*
+function scrollFunction() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    document.getElementById("nav").style.fontSize = "30px";
+  } else {
+    document.getElementById("nav").style.fontSize = "90px";
+  }
+}
+ */
+
 import {RouterLink} from "vue-router";
 
 </script>
 
 <template>
-  <nav>
+  <nav id="nav">
 
     <div id="leftNavDiv">
       <div class="navbarItem"> <RouterLink to="/">Home</RouterLink> </div>
-      <div class="navbarItem"> <RouterLink to="/kochen">Cooking</RouterLink> </div>
+      <div class="navbarItem"> <RouterLink to="/cooking">Cooking</RouterLink> </div>
     </div>
 
     <div> <img id="logo" alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> </div>
 
     <div id="rightNavDiv">
-      <div class="navbarItem"> <RouterLink to="/backen">Baking</RouterLink> </div>
+      <div class="navbarItem"> <RouterLink to="/baking">Baking</RouterLink> </div>
       <div class="navbarItem"> <RouterLink to="/about">About</RouterLink> </div>
     </div>
 
@@ -25,6 +37,8 @@ import {RouterLink} from "vue-router";
 <style scoped>
 
 nav {
+  position: sticky;
+  top: 0;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
