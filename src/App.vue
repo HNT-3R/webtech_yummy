@@ -1,5 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import Splashscreen from "@/components/Splashscreen.vue";
+
 </script>
 
 <template>
@@ -20,6 +22,7 @@ import { RouterLink, RouterView } from 'vue-router'
     margin: 0;
     width: 100%;
     font-family: Helvetica, sans-serif;
+    color: var(--text-dark-color);
   }
 
 </style>

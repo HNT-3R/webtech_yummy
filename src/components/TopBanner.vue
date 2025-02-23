@@ -12,7 +12,7 @@
   #image-container {
     border-style: solid;
     border-width: 2px 5px 2px 5px;
-    border-color: #00a463;
-    background-color: #00a463;
+    border-color: var(--bee-yellow-color);
+    background-color: var(--bee-yellow-color);
   }
 </style>

@@ -6,12 +6,14 @@ import PanelChooser from "@/components/PanelChooser.vue";
 import SimpleText from "@/components/SimpleText.vue";
 import SupportIcon from "@/components/icons/IconSupport.vue";
 import {RouterLink} from "vue-router";
+import BodyContainer from "@/components/BodyContainer.vue";
+import Footer from "@/components/Footer.vue";
 </script>
 
 <template>
   <Navbar />
   <TopBanner />
-  <body>
+  <BodyContainer>
     <PanelChooser />
     <SimpleText>
       <template #heading>Unterstüze dieses Projekt!</template>
@@ -19,22 +21,10 @@ import {RouterLink} from "vue-router";
       Wenn Sie dies verhindern möchten, spenden Sie an unsere Organisation "Obamas without borders" und helfen Sie dabei eine bessere Welt zu erschaffen.
       <RouterLink to="/load">Load</RouterLink>
     </SimpleText>
-
-  </body>
+  </BodyContainer>
+  <Footer/>
 </template>
 
 <style scoped>
-  body {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding: 15px 30px;
-    width: 100%;
-    height: fit-content;
-    border-style: solid;
-    border-width: 5px;
-    border-color: #00a463;
-    margin: 0px;
-  }
+
 </style>

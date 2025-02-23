@@ -1,34 +1,60 @@
 <script setup>
-
-window.onscroll = function() {scrollFunction()};
-
-/*
-function scrollFunction() {
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-    document.getElementById("nav").style.fontSize = "30px";
-  } else {
-    document.getElementById("nav").style.fontSize = "90px";
-  }
-}
- */
-
 import {RouterLink} from "vue-router";
+import {onMounted, onUnmounted, ref} from "vue";
+
+const defaultTextSize = "x-large";
+const scrolledTextSize = "large";
+const defaultImgSize = "125px"
+const scrolledImgSize = "50px"
+
+const isScrolled = ref(false);
+
+const handleScroll = () => {
+  isScrolled.value = document.documentElement.scrollTop > 200;
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
+
+const unhoveredImg = new URL("@/assets/YumBlebeeLogo.png", import.meta.url).href;
+const hoveredImg = new URL("@/assets/YumBlebeeLogoHover.png", import.meta.url).href;
+const currImg = ref(unhoveredImg);
+
+const changeImg = (newImage) => {
+  currImg.value = newImage;
+};
 
 </script>
 
 <template>
-  <nav id="nav">
+  <nav id="nav" :style="{ fontSize: isScrolled ? scrolledTextSize : defaultTextSize }">
 
     <div id="leftNavDiv">
-      <div class="navbarItem"> <RouterLink to="/">Home</RouterLink> </div>
-      <div class="navbarItem"> <RouterLink to="/cooking">Cooking</RouterLink> </div>
+      <div class="navbarItem">
+        <RouterLink to="/">Home</RouterLink>
+      </div>
+      <div class="navbarItem">
+        <RouterLink to="/cooking">Cooking</RouterLink>
+      </div>
     </div>
 
-    <div> <img id="logo" alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> </div>
+    <div>
+      <img @mouseover="changeImg(hoveredImg)" @mouseleave="changeImg(unhoveredImg)"
+           id="logo" alt="YB Logo" class="logo" :src="currImg" :style="{ width: isScrolled ? scrolledImgSize : defaultImgSize }" />
+    </div>
 
     <div id="rightNavDiv">
-      <div class="navbarItem"> <RouterLink to="/baking">Baking</RouterLink> </div>
-      <div class="navbarItem"> <RouterLink to="/about">About</RouterLink> </div>
+      <div class="navbarItem">
+        <RouterLink to="/baking">Baking</RouterLink>
+      </div>
+      <div class="navbarItem">
+        <RouterLink to="/about">About</RouterLink>
+      </div>
     </div>
 
   </nav>
@@ -43,11 +69,12 @@ nav {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  background-image: linear-gradient(#003229, #00a463);
+  background-image: linear-gradient(var(--back-color), var(--bee-yellow-color));
   width: 100%;
   margin: 0px;
   padding: 15px;
-  color: #a6eccd;
+  font-size: x-large;
+  transition: all 0.3s ease;
 }
 
 a:link, a:visited, a:active {
@@ -71,12 +98,21 @@ a:link, a:visited, a:active {
   display: flex;
   margin-left: auto;
   margin-right: auto;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  cursor: grab;
 }
 
 .navbarItem {
   margin: 0 10px;
-  font-size: x-large;
-
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--text-dark-color);
+  border-radius: 10px;
+  padding: 5px;
+  transition: all 0.3s ease;
 }
 
 </style>

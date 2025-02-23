@@ -3,15 +3,17 @@
 import Navbar from "@/components/Navbar.vue";
 import TopBanner from "@/components/TopBanner.vue";
 import RecipeItem from "@/components/RecipeItem.vue";
+import Footer from "@/components/Footer.vue";
 import PanelChooser from "@/components/PanelChooser.vue";
 import SimpleText from "@/components/SimpleText.vue";
 import {RouterLink} from "vue-router";
+import BodyContainer from "@/components/BodyContainer.vue";
 </script>
 
 <template>
   <Navbar />
   <TopBanner />
-  <body>
+  <BodyContainer>
     <RecipeItem>
       <template #img-slot>
         <img id="logo" alt="Vue logo" class="logo" src="@/assets/logo.svg"/>
@@ -33,7 +35,8 @@ import {RouterLink} from "vue-router";
       <template #heading>REZEPT_PLACEHOLDER</template>
       Hallöle
     </RecipeItem>
-  </body>
+  </BodyContainer>
+  <Footer/>
 </template>
 
 <style scoped>

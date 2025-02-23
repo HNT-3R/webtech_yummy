@@ -23,7 +23,7 @@
     width: 15vw;
     height: 15vw;
     border-style: solid;
-    border-color: #00a463;
+    border-color: var(--bee-red-color);
     border-radius: 10px;
   }
   

@@ -1,12 +1,16 @@
 <script setup>
-  import Splashscreen from "@/components/Splashscreen.vue";
-  import router from "@/router/index.js";
+  import {onMounted, ref} from "vue";
 
-  const loadTimeout = setTimeout(changePage, 2000);
+  //maybe ersetzen, KI
 
-  function changePage() {
-    router.push('/');
-  }
+  const isLoading = ref(true);
+
+  onMounted(() => {
+    setTimeout(() => {
+      isLoading.value = false;
+      sessionStorage.setItem("isFirstLoad", "false");
+    }, 10000);
+  });
 
 </script>
 
@@ -16,7 +20,7 @@
       <img id="logo" alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
     </div>
     <div id="splash-text">
-
+      JOOO
     </div>
   </div>
 </template>
@@ -33,10 +37,6 @@
     border-style: solid;
     border-width: 10px;
     border-color: #38ac79;
-  }
-
-  .fadeout {
-    animation: fadeout 2s forwards;
   }
 
   @keyframes fadeout {

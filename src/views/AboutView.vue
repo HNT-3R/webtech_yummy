@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar.vue";
 import TopBanner from "@/components/TopBanner.vue";
 import ContactItem from "@/components/ContactItem.vue";
 import SimpleText from "@/components/SimpleText.vue";
-
+import Footer from "@/components/Footer.vue";
 
 </script>
 
@@ -78,6 +78,7 @@ import SimpleText from "@/components/SimpleText.vue";
       Werbeinformationen, etwa durch Spam-Mails, vor.
     </SimpleText>
   </body>
+  <Footer/>
 </template>
 
 <style scoped>
@@ -93,7 +94,7 @@ body {
   height: fit-content;
   border-style: solid;
   border-width: 5px;
-  border-color: #00a463;
+  border-color: var(--bee-yellow-color);
   margin: 0px;
 }
 #info-boxes {
@@ -101,7 +102,6 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
 }
-
 
 </style>
 
