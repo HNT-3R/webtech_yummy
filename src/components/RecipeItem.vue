@@ -20,15 +20,14 @@
 
   .recipe-item {
     width: 40vw;
-    height: 10vh;
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-style: solid;
-    border-width: 5px;
-    border-color: #38ac79;
+    border: 5px solid var(--bee-red-color);
     border-radius: 10px;
     box-sizing: border-box;
+    padding: 10px;
+    gap: 20px;
   }
 
   .recipe-info {
@@ -39,14 +38,14 @@
   }
 
   .recipe-image {
-    height: 10vh;
-    width: 10vh;
-  }
-
-  image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    box-sizing: border-box;
+    height: 15vh;
+    border: 5px solid var(--bee-red-color);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
 </style>

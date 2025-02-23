@@ -13,44 +13,107 @@ import BodyContainer from "@/components/BodyContainer.vue";
 <template>
   <Navbar />
   <TopBanner />
-  <BodyContainer>
+  <BodyContainer id="body">
     <RecipeItem>
       <template #img-slot>
-        <img id="logo" alt="Vue logo" class="logo" src="@/assets/logo.svg"/>
+        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
+      </template>
+      <template #heading>REZEPT_PLACEHOLDER</template>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+    </RecipeItem>
+    <RecipeItem>
+      <template #img-slot>
+        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
       </template>
       <template #heading>REZEPT_PLACEHOLDER</template>
       Hallöle
     </RecipeItem>
     <RecipeItem>
       <template #img-slot>
-        <img id="logo" alt="Vue logo" class="logo" src="@/assets/logo.svg"/>
+        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
       </template>
       <template #heading>REZEPT_PLACEHOLDER</template>
       Hallöle
     </RecipeItem>
     <RecipeItem>
       <template #img-slot>
-        <img id="logo" alt="Vue logo" class="logo" src="@/assets/logo.svg"/>
+        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
       </template>
       <template #heading>REZEPT_PLACEHOLDER</template>
-      Hallöle
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+    </RecipeItem>
+    <RecipeItem>
+      <template #img-slot>
+        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
+      </template>
+      <template #heading>REZEPT_PLACEHOLDER</template>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+    </RecipeItem>
+    <RecipeItem>
+      <template #img-slot>
+        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
+      </template>
+      <template #heading>REZEPT_PLACEHOLDER</template>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+    </RecipeItem>
+    <RecipeItem>
+      <template #img-slot>
+        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
+      </template>
+      <template #heading>REZEPT_PLACEHOLDER</template>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+    </RecipeItem>
+    <RecipeItem>
+      <template #img-slot>
+        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
+      </template>
+      <template #heading>REZEPT_PLACEHOLDER</template>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+    </RecipeItem>
+    <RecipeItem>
+      <template #img-slot>
+        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
+      </template>
+      <template #heading>REZEPT_PLACEHOLDER</template>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
+      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
     </RecipeItem>
   </BodyContainer>
   <Footer/>
 </template>
 
 <style scoped>
-  body {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding: 15px 30px;
-    width: 100%;
-    height: fit-content;
-    border-style: solid;
-    border-width: 5px;
-    border-color: #00a463;
-    margin: 0px;
+
+  #body {
+    display: grid;
+    grid-template-columns: 40vw 40vw;
+    justify-content: space-evenly;
   }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
 </style>

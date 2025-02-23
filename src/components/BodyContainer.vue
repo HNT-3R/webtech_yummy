@@ -21,5 +21,6 @@
     border-width: 5px;
     border-color: var(--bee-yellow-color);
     margin: 0px;
+    min-height: 50vh;
 }
 </style>

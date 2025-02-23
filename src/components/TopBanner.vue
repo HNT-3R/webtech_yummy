@@ -4,7 +4,7 @@
 
 <template>
   <div id="image-container">
-    <img src="../assets/obama_placeholder.jpg" alt="Obama placeholder" style="width:100%; height:300px" />
+    <img src="../assets/img/obama_placeholder.jpg" alt="Obama placeholder" style="width:100%; height:300px" />
   </div>
 </template>
 

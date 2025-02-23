@@ -2,7 +2,6 @@
 
 import Navbar from "@/components/Navbar.vue";
 import TopBanner from "@/components/TopBanner.vue";
-import ContactItem from "@/components/ContactItem.vue";
 import SimpleText from "@/components/SimpleText.vue";
 import Footer from "@/components/Footer.vue";
 
@@ -15,21 +14,19 @@ import Footer from "@/components/Footer.vue";
     <h1>
       Impressum
     </h1>
-    <div id="info-boxes">
-      <ContactItem>
-        <template #heading>Angaben gemäß § 5 DDG</template>
-        Jakob Unterschütz - B.Sc. Informatik (dual), PIZD Sachsen-Anhalt <br>
-        Friedrichstraße 57-59 <br>
-        38855 Wernigerode <br>
-        Vertreten durch: <br>
-        Jakob Unterschütz
-      </ContactItem>
-      <ContactItem>
-        <template #heading>Kontakt</template>
-        Telefon: 015144946868 <br>
-        E-Mail: u39032@hs-harz.de
-      </ContactItem>
-    </div>
+    <SimpleText>
+      <template #heading>Angaben gemäß § 5 DDG</template>
+      Jakob Unterschütz - B.Sc. Informatik (dual), PIZD Sachsen-Anhalt <br>
+      Friedrichstraße 57-59 <br>
+      38855 Wernigerode <br>
+      Vertreten durch: <br>
+      Jakob Unterschütz
+    </SimpleText>
+    <SimpleText>
+      <template #heading>Kontakt</template>
+      Telefon: 015144946868 <br>
+      E-Mail: u39032@hs-harz.de
+    </SimpleText>
     <SimpleText>
       <template #heading>Haftung für Inhalte</template>
       Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität

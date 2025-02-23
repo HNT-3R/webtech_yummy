@@ -6,7 +6,7 @@
   <div id="panel">
     <router-link to="/cooking">
       <div class="panel-button">
-        <img class="panel-image" src="@/assets/YumBlebeeCooking.png" alt="baking">
+        <img class="panel-image" src="../assets/img/YumBlebeeCooking.png" alt="baking">
         <div class="panel-hover-text">
           Cooking
         </div>
@@ -14,7 +14,7 @@
     </router-link>
     <router-link to="/baking">
       <div class="panel-button">
-        <img class="panel-image" src="@/assets/YumBlebeeMuffin.png" alt="baking">
+        <img class="panel-image" src="../assets/img/YumBlebeeMuffin.png" alt="baking">
         <div class="panel-hover-text">
           Baking
         </div>

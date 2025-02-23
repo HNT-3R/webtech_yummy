@@ -17,7 +17,7 @@
 <template>
   <div class="splashscreen">
     <div id="splash-icon">
-      <img id="logo" alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+      <img id="logo" alt="Vue logo" class="logo" src="../assets/img/logo.svg" width="125" height="125" />
     </div>
     <div id="splash-text">
       JOOO

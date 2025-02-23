@@ -2,7 +2,7 @@
 import {RouterLink} from "vue-router";
 import {onMounted, onUnmounted, ref} from "vue";
 
-const defaultTextSize = "x-large";
+const defaultTextSize = "xx-large";
 const scrolledTextSize = "large";
 const defaultImgSize = "125px"
 const scrolledImgSize = "50px"
@@ -21,8 +21,8 @@ onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
 });
 
-const unhoveredImg = new URL("@/assets/YumBlebeeLogo.png", import.meta.url).href;
-const hoveredImg = new URL("@/assets/YumBlebeeLogoHover.png", import.meta.url).href;
+const unhoveredImg = new URL("@/assets/img/YumBlebeeLogo.png", import.meta.url).href;
+const hoveredImg = new URL("@/assets/img/YumBlebeeLogoHover.png", import.meta.url).href;
 const currImg = ref(unhoveredImg);
 
 const changeImg = (newImage) => {
@@ -35,12 +35,16 @@ const changeImg = (newImage) => {
   <nav id="nav" :style="{ fontSize: isScrolled ? scrolledTextSize : defaultTextSize }">
 
     <div id="leftNavDiv">
-      <div class="navbarItem">
-        <RouterLink to="/">Home</RouterLink>
-      </div>
-      <div class="navbarItem">
-        <RouterLink to="/cooking">Cooking</RouterLink>
-      </div>
+      <RouterLink to="/">
+        <div class="navbarItem">
+          Home
+        </div>
+      </RouterLink>
+      <RouterLink to="/cooking">
+        <div class="navbarItem">
+          Cooking
+        </div>
+      </RouterLink>
     </div>
 
     <div>
@@ -49,12 +53,16 @@ const changeImg = (newImage) => {
     </div>
 
     <div id="rightNavDiv">
-      <div class="navbarItem">
-        <RouterLink to="/baking">Baking</RouterLink>
-      </div>
-      <div class="navbarItem">
-        <RouterLink to="/about">About</RouterLink>
-      </div>
+      <RouterLink to="/baking">
+        <div class="navbarItem">
+          Baking
+        </div>
+      </RouterLink>
+      <RouterLink to="/about">
+        <div class="navbarItem">
+          About
+        </div>
+      </RouterLink>
     </div>
 
   </nav>
@@ -109,10 +117,16 @@ a:link, a:visited, a:active {
   margin: 0 10px;
   border-style: solid;
   border-width: 2px;
-  border-color: var(--text-dark-color);
+  border-color: var(--bee-red-color);
   border-radius: 10px;
   padding: 5px;
   transition: all 0.3s ease;
+}
+
+.navbarItem:hover {
+  background-color: var(--bee-red-color);
+
+  transition-duration: 0.5s;
 }
 
 </style>
