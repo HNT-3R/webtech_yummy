@@ -4,110 +4,60 @@ import Navbar from "@/components/Navbar.vue";
 import TopBanner from "@/components/TopBanner.vue";
 import RecipeItem from "@/components/RecipeItem.vue";
 import Footer from "@/components/Footer.vue";
-import PanelChooser from "@/components/PanelChooser.vue";
-import SimpleText from "@/components/SimpleText.vue";
-import {RouterLink} from "vue-router";
 import BodyContainer from "@/components/BodyContainer.vue";
+import { ref, onMounted } from "vue";
+import {addRecipe, delRecipe, getRecipes} from "@/databaseSetup.js"
+import Splashscreen from "@/components/Splashscreen.vue";
+
+
+const recipes = ref([]);
+const loading = ref(true);
+
+async function fetchRecipes() {
+  try {
+    recipes.value = await getRecipes("cookingRecipes");
+  } catch (error) {
+    console.error("Recipes unable to be loaded...");
+  } finally {
+    loading.value = false;
+  }
+}
+
+onMounted(() => {
+  setTimeout(fetchRecipes, 1000);
+})
+
 </script>
 
 <template>
-  <Navbar />
-  <TopBanner />
-  <BodyContainer id="body">
-    <RecipeItem>
-      <template #img-slot>
-        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
-      </template>
-      <template #heading>REZEPT_PLACEHOLDER</template>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-    </RecipeItem>
-    <RecipeItem>
-      <template #img-slot>
-        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
-      </template>
-      <template #heading>REZEPT_PLACEHOLDER</template>
-      Hallöle
-    </RecipeItem>
-    <RecipeItem>
-      <template #img-slot>
-        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
-      </template>
-      <template #heading>REZEPT_PLACEHOLDER</template>
-      Hallöle
-    </RecipeItem>
-    <RecipeItem>
-      <template #img-slot>
-        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
-      </template>
-      <template #heading>REZEPT_PLACEHOLDER</template>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-    </RecipeItem>
-    <RecipeItem>
-      <template #img-slot>
-        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
-      </template>
-      <template #heading>REZEPT_PLACEHOLDER</template>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-    </RecipeItem>
-    <RecipeItem>
-      <template #img-slot>
-        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
-      </template>
-      <template #heading>REZEPT_PLACEHOLDER</template>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-    </RecipeItem>
-    <RecipeItem>
-      <template #img-slot>
-        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
-      </template>
-      <template #heading>REZEPT_PLACEHOLDER</template>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-    </RecipeItem>
-    <RecipeItem>
-      <template #img-slot>
-        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
-      </template>
-      <template #heading>REZEPT_PLACEHOLDER</template>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-    </RecipeItem>
-    <RecipeItem>
-      <template #img-slot>
-        <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
-      </template>
-      <template #heading>REZEPT_PLACEHOLDER</template>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-      Hallöle SIGMA SIGMA GYATT BANG BANG BA LANG HOBLEHE SKENYUEM <br/>
-    </RecipeItem>
-  </BodyContainer>
-  <Footer/>
+  <div v-if="loading">
+    <Splashscreen/>
+  </div>
+  <div v-else>
+    <Navbar />
+    <TopBanner />
+    <BodyContainer id="recipesContainer">
+      <RecipeItem v-for = "recipe in recipes" :key="recipe.id">
+        <template #img-slot>
+          <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
+        </template>
+        <template #heading>{{ recipe.recipeName }}</template>
+        Ingredients: {{ recipe.ingredients }} <br>
+        Instructions: {{ recipe.instructions }} <br>
+        Additional notes: {{ recipe.extraNotices }} <br>
+      </RecipeItem>
+    </BodyContainer>
+    <Footer/>
+  </div>
 </template>
 
 <style scoped>
 
-  #body {
+  #recipesContainer {
     display: grid;
     grid-template-columns: 40vw 40vw;
     justify-content: space-evenly;
+    grid-gap: 20px;
   }
 
   img {

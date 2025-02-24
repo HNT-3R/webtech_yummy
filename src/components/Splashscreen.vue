@@ -17,10 +17,10 @@
 <template>
   <div class="splashscreen">
     <div id="splash-icon">
-      <img id="logo" alt="Vue logo" class="logo" src="../assets/img/logo.svg" width="125" height="125" />
+      <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogo.png" width="200" height="200" />
     </div>
     <div id="splash-text">
-      JOOO
+      Lade Rezeptdaten...
     </div>
   </div>
 </template>
@@ -33,16 +33,14 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: linear-gradient(#003229, #00df92);
+    background-image: linear-gradient(var(--back-color), var(--back-color-dark));
     border-style: solid;
     border-width: 10px;
-    border-color: #38ac79;
+    border-color: var(--bee-yellow-color);
   }
 
-  @keyframes fadeout {
-    to {
-      opacity: 0;
-      visibility: hidden;
-    }
+  #splash-text {
+    font-size: x-large;
   }
+
 </style>

@@ -2,6 +2,8 @@
 import { RouterLink, RouterView } from 'vue-router'
 import Splashscreen from "@/components/Splashscreen.vue";
 
+
+
 </script>
 
 <template>

@@ -33,7 +33,7 @@
   .recipe-info {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
   }
 
