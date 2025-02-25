@@ -1,31 +1,31 @@
 <script setup>
 
 import Navbar from "@/components/Navbar.vue";
-import TopBanner from "@/components/TopBanner.vue";
 import SimpleText from "@/components/SimpleText.vue";
 import Footer from "@/components/Footer.vue";
 import HorizontalSeperator from "@/components/HorizontalSeperator.vue";
+import BodyContainer from "@/components/BodyContainer.vue";
 
 </script>
 
-
 <template>
   <Navbar />
-  <body>
+  <BodyContainer class="about-body">
     <h1>
       Impressum
     </h1>
     <SimpleText>
       <template #heading>Angaben gemäß § 5 DDG</template>
-      Jakob Unterschütz - B.Sc. Informatik (dual), PIZD Sachsen-Anhalt <br>
+      YumBleBee Webdevelopment <br>
       Friedrichstraße 57-59 <br>
       38855 Wernigerode <br>
       Vertreten durch: <br>
       Jakob Unterschütz
     </SimpleText>
+
     <SimpleText>
       <template #heading>Kontakt</template>
-      Telefon: 015144946868 <br>
+      Telefon: 01514494**** <br>
       E-Mail: u39032@hs-harz.de
     </SimpleText>
 
@@ -78,31 +78,11 @@ import HorizontalSeperator from "@/components/HorizontalSeperator.vue";
       Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von
       Werbeinformationen, etwa durch Spam-Mails, vor.
     </SimpleText>
-  </body>
+  </BodyContainer>
   <Footer/>
 </template>
 
 <style scoped>
-
-body {
-  display: flex;
-  flex-direction: column;
-
-  box-sizing: border-box;
-  gap: 30px;
-  padding: 15px 30px;
-  width: 100%;
-  height: fit-content;
-  border-style: solid;
-  border-width: 5px;
-  border-color: var(--bee-yellow-color);
-  margin: 0px;
-}
-#info-boxes {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
 
 </style>
 

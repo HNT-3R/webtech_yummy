@@ -20,7 +20,7 @@
       <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogo.png" width="200" height="200" />
     </div>
     <div id="splash-text">
-      Lade Rezeptdaten...
+      Loading recipe data...
     </div>
   </div>
 </template>

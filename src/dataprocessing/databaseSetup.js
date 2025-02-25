@@ -38,19 +38,19 @@ function openDb(dbName, dbVersion) {
             //erstelle objectStore für alle Kochrezepte
             if (!database.objectStoreNames.contains(dataStoreCookingName)) {
                 const cookingRecipeStore = database.createObjectStore(
-                    dataStoreCookingName, { keyPath: 'id', autoIncrement: true }
+                    dataStoreCookingName, { keyPath: "id", autoIncrement: true }
                 );
                 //eindeutiger Index bei Namen
-                cookingRecipeStore.createIndex('name', 'name', { unique: true });
+                cookingRecipeStore.createIndex("recipeName", "recipeName", { unique: true });
             }
 
             //erstelle objectStore für alle Kochrezepte
             if (!database.objectStoreNames.contains(dataStoreBakingName)) {
                 const bakingRecipeStore = database.createObjectStore(
-                    dataStoreBakingName, { keyPath: 'id', autoIncrement: true }
+                    dataStoreBakingName, { keyPath: "id", autoIncrement: true }
                 );
                 //eindeutiger Index bei Namen
-                bakingRecipeStore.createIndex('name', 'name', { unique: true });
+                bakingRecipeStore.createIndex("recipeName", "recipeName", { unique: true });
             }
         };
     });
@@ -60,12 +60,15 @@ function openDb(dbName, dbVersion) {
  * Eröffnet eine Transaktion an der Indexed Datenbank.
  * @param storeName Name der zu modifizierenden objectStorage
  * @param mode Modus in der die Transaktion sein soll (readonly vs. readwrite)
- * @returns {Promise<*|IDBObjectStore>} Promise zurückgeben, basierend auf Erfolg
+ * @returns {Promise<{transaction: *, objectStore: *}>} Transaction sodass diese lang genug offen bleibt
+ * und objectStore um daran die Objekte auszulesen
  */
 
 async function startTransaction(storeName, mode) {
     const database = await openDb(databaseName, databaseVersion);
-    return await database.transaction(storeName, mode).objectStore(storeName);
+    const transaction = database.transaction(storeName, mode);
+    const objectStore = transaction.objectStore(storeName);
+    return { transaction, objectStore };
 }
 
 /**
@@ -79,7 +82,7 @@ async function startTransaction(storeName, mode) {
  */
 
 export async function addRecipe(storeName, recipe)  {
-    const objectStore = await startTransaction(storeName, "readwrite");
+    const { transaction, objectStore } = await startTransaction(storeName, "readwrite");
     return new Promise((resolve, reject) => {
         const request = objectStore.add(recipe);
         request.onsuccess = () => resolve(request.result);
@@ -89,7 +92,7 @@ export async function addRecipe(storeName, recipe)  {
 
 /**
  * Entfernt bestehende Rezepte aus der angegebenen Storage.
- * Rezepte werden anhand des Namens gefunden und gelösht.
+ * Rezepte werden anhand des Namens gefunden und gelöscht.
  * Wird u.A. benötigt für den Löschen-Dialog.
  * @param storeName Name der zu modifizierenden objectStorage
  * @param recipeName Rezept, das gelöscht werden soll (nur Name nötig hier).
@@ -97,18 +100,36 @@ export async function addRecipe(storeName, recipe)  {
  */
 
 export async function delRecipe(storeName, recipeName) {
-    const objectStore = await startTransaction(storeName, "readwrite");
+    const { transaction, objectStore } = await startTransaction(storeName, "readwrite");
     return new Promise((resolve, reject) => {
-        const index = objectStore.index("name");
+        const index = objectStore.index("recipeName");
+
         const request = index.getKey(recipeName);
-        //console.log(request.result);
+
         request.onsuccess = () => {
             const recipeID = request.result;
-            console.log(recipeID);
-            const delRequest = objectStore.delete(recipeID);
-            delRequest.onsuccess = () => resolve(request.result);
-            delRequest.onerror = () => reject(request.error);
-        }
+            if (recipeID) {
+                const delRequest = objectStore.delete(recipeID);
+
+                delRequest.onsuccess = () => {
+                    console.log("Recipe deleted successfully: (ID) " + recipeID);
+                    resolve(delRequest.result);
+                };
+
+                delRequest.onerror = () => {
+                    console.error("Delete request failed: ", delRequest.error);
+                    reject(delRequest.error);
+                };
+            } else {
+                alert("Recipe was not found in database.")
+                reject(new Error("Recipe not found."));
+            }
+        };
+
+        request.onerror = () => {
+            console.error("GetKey request failed:", request.error);
+            reject(request.error);
+        };
     });
 }
 
@@ -119,7 +140,7 @@ export async function delRecipe(storeName, recipeName) {
  */
 
 export async function getRecipes(storeName) {
-    const objectStore = await startTransaction(storeName, "readonly");
+    const { transaction, objectStore } = await startTransaction(storeName, "readonly");
     return new Promise((resolve, reject) => {
         const request = objectStore.getAll();
         request.onsuccess = () => resolve(request.result);

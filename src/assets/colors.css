@@ -1,10 +1,15 @@
 :root {
     --bee-yellow-color: #DCA846;
     --bee-yellow-darkened-color: #72592b;
+    --bee-yellow-lightened-color: #efc47d;
+
     --bee-red-color: #B13B2B;
+    --bee-red-lightened-color: #cc6c5e;
+
     --back-color: #EDDAC5;
     --back-color-light: #f4eddc;
     --back-color-dark: #dabc9b;
+
     --text-bright-color: #FEF9E1;
     --text-dark-color: #383838;
 }

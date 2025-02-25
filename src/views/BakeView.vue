@@ -6,9 +6,10 @@ import RecipeItem from "@/components/RecipeItem.vue";
 import Footer from "@/components/Footer.vue";
 import BodyContainer from "@/components/BodyContainer.vue";
 import { ref, onMounted } from "vue";
-import {addRecipe, delRecipe, getRecipes} from "@/databaseSetup.js"
+import {addRecipe, delRecipe, getRecipes} from "@/dataprocessing/databaseSetup.js"
 import Splashscreen from "@/components/Splashscreen.vue";
-
+import RecipeAddDialogue from "@/components/RecipeAddDialogue.vue";
+import RecipeDeleteDialogue from "@/components/RecipeDeleteDialogue.vue";
 
 const recipes = ref([]);
 const loading = ref(true);
@@ -27,6 +28,24 @@ onMounted(() => {
   setTimeout(fetchRecipes, 1000);
 })
 
+async function addRecipeHandling(newRecipe) {
+  try {
+    await addRecipe("bakingRecipes", newRecipe);
+    await fetchRecipes();
+  } catch (error) {
+    console.error("Recipes failed to add..." + error);
+  }
+}
+
+async function deleteRecipeHandling(recipeName) {
+  try {
+    await delRecipe("bakingRecipes", recipeName);
+    await fetchRecipes();
+  } catch (error) {
+    console.error("Failed to remove recipes..." + error);
+  }
+}
+
 </script>
 
 <template>
@@ -37,6 +56,8 @@ onMounted(() => {
     <Navbar />
     <TopBanner />
     <BodyContainer id="recipesContainer">
+      <RecipeAddDialogue @add-recipe="addRecipeHandling" />
+      <RecipeDeleteDialogue @delete-recipe="deleteRecipeHandling"/>
       <RecipeItem v-for = "recipe in recipes" :key="recipe.id">
         <template #img-slot>
           <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogoSmall.png"/>
@@ -44,7 +65,7 @@ onMounted(() => {
         <template #heading>{{ recipe.recipeName }}</template>
         Ingredients: {{ recipe.ingredients }} <br>
         Instructions: {{ recipe.instructions }} <br>
-        Additional notes: {{ recipe.extraNotices }} <br>
+        Additional notes: {{ recipe.notes }} <br>
       </RecipeItem>
     </BodyContainer>
     <Footer/>

@@ -46,6 +46,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100px;
+    min-width: 100px;
   }
 
 </style>

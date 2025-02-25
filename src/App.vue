@@ -18,7 +18,6 @@ import Splashscreen from "@/components/Splashscreen.vue";
     margin: 0;
     align-items: center;
     justify-content: center;
-    margin: 0;
     width: 100%;
     font-family: Helvetica, sans-serif;
     color: var(--text-dark-color);
