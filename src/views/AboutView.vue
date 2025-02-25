@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar.vue";
 import TopBanner from "@/components/TopBanner.vue";
 import SimpleText from "@/components/SimpleText.vue";
 import Footer from "@/components/Footer.vue";
+import HorizontalSeperator from "@/components/HorizontalSeperator.vue";
 
 </script>
 
@@ -27,6 +28,9 @@ import Footer from "@/components/Footer.vue";
       Telefon: 015144946868 <br>
       E-Mail: u39032@hs-harz.de
     </SimpleText>
+
+    <HorizontalSeperator/>
+
     <SimpleText>
       <template #heading>Haftung für Inhalte</template>
       Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität

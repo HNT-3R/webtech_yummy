@@ -13,7 +13,7 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
     padding: 15px 30px;
     width: 100%;
     height: fit-content;

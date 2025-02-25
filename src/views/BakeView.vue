@@ -13,20 +13,12 @@ import Splashscreen from "@/components/Splashscreen.vue";
 const recipes = ref([]);
 const loading = ref(true);
 
-async function loadWait(ms) {
-  new Promise(resolve => {
-    setTimeout(resolve, ms);
-  })
-}
-
-
 async function fetchRecipes() {
   try {
     recipes.value = await getRecipes("bakingRecipes");
   } catch (error) {
     console.error("Recipes unable to be loaded...");
   } finally {
-    await loadWait(1500);
     loading.value = false;
   }
 }

@@ -99,9 +99,16 @@ export async function addRecipe(storeName, recipe)  {
 export async function delRecipe(storeName, recipeName) {
     const objectStore = await startTransaction(storeName, "readwrite");
     return new Promise((resolve, reject) => {
-        const request = objectStore.delete(recipeName);
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => reject(request.error);
+        const index = objectStore.index("name");
+        const request = index.getKey(recipeName);
+        //console.log(request.result);
+        request.onsuccess = () => {
+            const recipeID = request.result;
+            console.log(recipeID);
+            const delRequest = objectStore.delete(recipeID);
+            delRequest.onsuccess = () => resolve(request.result);
+            delRequest.onerror = () => reject(request.error);
+        }
     });
 }
 

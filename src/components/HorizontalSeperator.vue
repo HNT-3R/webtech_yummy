@@ -3,19 +3,19 @@
 </script>
 
 <template>
-  <div id="image-container">
-  </div>
+  <div class="horizontal"></div>
 </template>
 
 <style scoped>
-  #image-container {
+  .horizontal {
+    height: 20px;
+    width: 100%;
     border-style: solid;
-    border-width: 2px 5px 2px 5px;
+    border-width: 5px;
     border-color: var(--bee-yellow-color);
-    background-color: var(--back-color);
+    border-radius: 10px;
     background-image: url("@/assets/img/YumBlebeeBG.png");
-    background-repeat: repeat;
     background-position: center center;
-    height: 150px;
+    background-repeat: repeat;
   }
 </style>
