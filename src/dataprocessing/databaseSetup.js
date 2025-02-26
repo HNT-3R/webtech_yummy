@@ -68,6 +68,8 @@ async function startTransaction(storeName, mode) {
     const database = await openDb(databaseName, databaseVersion);
     const transaction = database.transaction(storeName, mode);
     const objectStore = transaction.objectStore(storeName);
+    console.log("Opened transaction successfully!");
+    //gebe beides zurück, da transaction sonst zu früh geschlossen wird
     return { transaction, objectStore };
 }
 
@@ -85,8 +87,14 @@ export async function addRecipe(storeName, recipe)  {
     const { transaction, objectStore } = await startTransaction(storeName, "readwrite");
     return new Promise((resolve, reject) => {
         const request = objectStore.add(recipe);
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => reject(request.error);
+        request.onsuccess = () => {
+            console.log("Successfully added recipe: " + recipe.recipeName);
+            resolve(request.result);
+        }
+        request.onerror = () => {
+            console.log("Add request failed: " + request.error);
+            reject(request.error);
+        }
     });
 }
 
@@ -105,6 +113,7 @@ export async function delRecipe(storeName, recipeName) {
         const index = objectStore.index("recipeName");
 
         const request = index.getKey(recipeName);
+        console.log("Got key: " + request.result)
 
         request.onsuccess = () => {
             const recipeID = request.result;

@@ -1,29 +1,36 @@
-# basic_proto
+# YumBleBee Website
 
-This template should help get you started developing with Vue 3 in Vite.
+Diese Readme enhält alle wesentlichen Infos zur Ausführung dieses Programms.
 
-## Recommended IDE Setup
+## IDE
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+[Webstorm](https://www.jetbrains.com/webstorm/) wurde zur Erstellung des Projekts verwendet und bietet somit die
+passenden Tools zur Bearbeitung und Ausführung dieses Projekts. Jedoch sollten alle folgenden
+Schritte auch per VSCode o.Ä. möglich sein.
 
-## Customize configuration
+## Setup des Projektes
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+Zuerst sollte das Projekt direkt über die IDE geöffnet werden, sodass es als Projekt erkannt wird.
 
-## Project Setup
+Damit ein lokaler Server gestartet wird, um die Webseite zu nutzen, müssen folgende Commands in die Konsole
+eingegeben werden (Popup sollte auch auftauchen):
 
+Node package manager:
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
-
+Starte lokalen Server:
 ```sh
 npm run dev
+oder
+npm run serve
 ```
 
-### Compile and Minify for Production
-
+Dependencies installieren:
 ```sh
 npm run build
 ```
+
+Per F12/Inspektor können weiter Informationen für Entwickler aufgerufen werden.
+Unter "Web-Speicher" ist auch die Indexed DB mit den Rezepten aufzufinden.

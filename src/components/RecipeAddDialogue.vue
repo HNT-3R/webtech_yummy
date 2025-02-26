@@ -7,11 +7,9 @@
   let opened = ref(false);
 
   function toggleForm() {
-    console.log(opened);
     opened.value = !opened.value;
+    console.log("AddForm opened? " + opened.value);
   }
-
-
 
   // ##### Rezepte hinzufügen und RegEX prüfen #####
 
@@ -22,11 +20,12 @@
 
   const emit = defineEmits(["add-recipe"]);
 
+  //Funktion wird beim drücken des Submit-Buttons genutzt
   async function addRecipeButtonFunc() {
 
     //neues Rezept mit den neuen Werten initialisieren
     const newRecipe = { recipeName: newRecipeName.value, ingredients: newRecipeIngredients.value, instructions: newRecipeInstructions.value, notes: newRecipeNotes.value };
-    console.log(newRecipe);
+    console.log("New recipe created: " + newRecipe.recipeName);
 
     //validiere Rezeptnamen
     let recipeNameRegEX = /^[a-zA-Z0-9\s-]{1,128}$/;
@@ -82,7 +81,7 @@
 <template>
   <div id="outer-div">
     <button type="button" @click="toggleForm()" id="toggle-button">Open Recipe Add Menu</button>
-    <div class="recipe-add-dialogue" v-if="opened">
+    <div v-if="opened">
       <form id="add-form" @submit.prevent="addRecipeButtonFunc">
         <h2>Add Recipe</h2>
         <div class="form-group">
@@ -113,25 +112,29 @@
 
 <style scoped>
   #add-form {
-    border: 5px solid var(--bee-yellow-color);
-    border-radius: 10px;
     box-sizing: border-box;
     padding: 15px;
+    min-height: 200px;
+
+    background-image: linear-gradient(var(--back-color-light), var(--bee-yellow-lightened-color));
+
     display: flex;
     flex-flow: wrap;
     gap: 20px;
     align-items: center;
     justify-content: space-evenly;
-    min-height: 200px;
-    background-image: linear-gradient(var(--back-color-light), var(--bee-yellow-lightened-color));
+
+    border: 5px solid var(--bee-yellow-color);
+    border-radius: 10px;
   }
 
   button {
-    border: 5px solid var(--bee-red-color);
-    border-radius: 10px;
     background-image: linear-gradient(var(--bee-yellow-lightened-color), var(--back-color-light));
     height: 50%;
     width: 15%;
+
+    border: 5px solid var(--bee-red-color);
+    border-radius: 10px;
   }
 
   #toggle-button {
@@ -142,9 +145,10 @@
 
   input, textarea {
     background-image: linear-gradient(var(--back-color), var(--back-color-light));
+    padding: 5px;
+
     border: 2px solid var(--bee-red-color);
     border-radius: 10px;
-    padding: 5px;
   }
 
   #outer-div {

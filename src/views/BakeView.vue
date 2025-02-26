@@ -11,9 +11,14 @@ import Splashscreen from "@/components/Splashscreen.vue";
 import RecipeAddDialogue from "@/components/RecipeAddDialogue.vue";
 import RecipeDeleteDialogue from "@/components/RecipeDeleteDialogue.vue";
 
+//enthält alle Rezepte (kommt via fetchRecipes)
 const recipes = ref([]);
 const loading = ref(true);
 
+/**
+ * Holt alle Rezepte aus der jeweiligen Storage der Datenbank.
+ * Für Kochrezepte ist das "cookingRecipes", für Backrezepte ist das "bakingRecipes".
+ */
 async function fetchRecipes() {
   try {
     recipes.value = await getRecipes("bakingRecipes");
@@ -28,6 +33,10 @@ onMounted(() => {
   setTimeout(fetchRecipes, 1000);
 })
 
+/**
+ * Handled das hinzufügen eines neuen Rezepts, interagiert mit der Datenbank.
+ * @param newRecipe Neues Rezeptobjekt (wird aus der Kompenente RecipeAddDialog gesendet)
+ */
 async function addRecipeHandling(newRecipe) {
   try {
     await addRecipe("bakingRecipes", newRecipe);
@@ -37,6 +46,10 @@ async function addRecipeHandling(newRecipe) {
   }
 }
 
+/**
+ * Handled das löschen eines Rezepts anhand des Namens, interagiert mit der Datenbank.
+ * @param recipeName Name des zu löschenden Rezepts (ist Index, ermittelt daraufhin key zum löschen)
+ */
 async function deleteRecipeHandling(recipeName) {
   try {
     await delRecipe("bakingRecipes", recipeName);
@@ -45,7 +58,6 @@ async function deleteRecipeHandling(recipeName) {
     console.error("Failed to remove recipes..." + error);
   }
 }
-
 </script>
 
 <template>
@@ -74,17 +86,17 @@ async function deleteRecipeHandling(recipeName) {
 
 <style scoped>
 
-#recipesContainer {
-  display: grid;
-  grid-template-columns: 40vw 40vw;
-  justify-content: space-evenly;
-  grid-gap: 20px;
-}
+  #recipesContainer {
+    display: grid;
+    grid-template-columns: 40vw 40vw;
+    justify-content: space-evenly;
+    grid-gap: 20px;
+  }
 
-img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 </style>

@@ -1,23 +1,29 @@
 <script setup>
 
-import {ref} from "vue";
+  // ##### Togglen des Formulars via Button #####
 
-let opened = ref(false);
+  import {ref} from "vue";
 
-function toggleForm() {
-  console.log(opened);
-  opened.value = !opened.value;
-}
+  let opened = ref(false);
 
-const recipeName = ref("");
-const emit = defineEmits(["delete-recipe"]);
+  function toggleForm() {
+    opened.value = !opened.value;
+    console.log("DelForm opened? " + opened.value);
+  }
 
-async function delRecipeButtonFunc() {
+  // ##### Rezepte entfernen #####
 
-  emit("delete-recipe", recipeName.value);
+  const recipeName = ref("");
+  const emit = defineEmits(["delete-recipe"]);
 
-  //setze den Rezeptnamen zurück für das nächste Rezept
-  recipeName.value = "";
+  //Funktion wird beim drücken des Submit-Buttons ausgeführt
+  async function delRecipeButtonFunc() {
+
+    //gebe Event "delete-recipe" zurück, sodass Name im View vewendet werden kann
+    emit("delete-recipe", recipeName.value);
+
+    //setze den Rezeptnamen zurück für das nächste Rezept
+    recipeName.value = "";
 }
 </script>
 
@@ -38,43 +44,48 @@ async function delRecipeButtonFunc() {
 </template>
 
 <style scoped>
-#del-form {
-  border: 5px solid var(--bee-red-color);
-  border-radius: 10px;
-  box-sizing: border-box;
-  padding: 15px;
-  display: flex;
-  flex-flow: wrap;
-  gap: 20px;
-  align-items: center;
-  justify-content: space-evenly;
-  min-height: 200px;
-  background-image: linear-gradient(var(--back-color-light), var(--bee-red-lightened-color));
-}
+  #del-form {
+    box-sizing: border-box;
+    padding: 15px;
+    min-height: 200px;
 
-button {
-  border: 5px solid var(--bee-red-color);
-  border-radius: 10px;
-  background-image: linear-gradient(var(--bee-red-lightened-color), var(--back-color-light));
-  height: 50%;
-  width: 20%;
-}
+    display: flex;
+    flex-flow: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-evenly;
 
-#toggle-button {
-  width: 200px;
-  height: 40px;
-}
+    background-image: linear-gradient(var(--back-color-light), var(--bee-red-lightened-color));
 
-input {
-  background-image: linear-gradient(var(--back-color), var(--back-color-light));
-  border: 2px solid var(--bee-red-color);
-  border-radius: 10px;
-  padding: 5px;
-}
+    border: 5px solid var(--bee-red-color);
+    border-radius: 10px;
+  }
 
-#outer-div {
-  display: grid;
-  grid-gap: 10px;
-}
+  button {
+    height: 50%;
+    width: 20%;
 
+    background-image: linear-gradient(var(--bee-red-lightened-color), var(--back-color-light));
+
+    border: 5px solid var(--bee-red-color);
+    border-radius: 10px;
+  }
+
+  #toggle-button {
+    width: 200px;
+    height: 40px;
+  }
+
+  input {
+    background-image: linear-gradient(var(--back-color), var(--back-color-light));
+    padding: 5px;
+
+    border: 2px solid var(--bee-red-color);
+    border-radius: 10px;
+  }
+
+  #outer-div {
+    display: grid;
+    grid-gap: 10px;
+  }
 </style>

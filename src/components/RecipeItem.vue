@@ -17,17 +17,18 @@
 </template>
 
 <style scoped>
-
   .recipe-item {
     width: 40vw;
+    box-sizing: border-box;
+    padding: 10px;
+
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 20px;
+
     border: 5px solid var(--bee-red-color);
     border-radius: 10px;
-    box-sizing: border-box;
-    padding: 10px;
-    gap: 20px;
   }
 
   .recipe-info {
@@ -40,14 +41,15 @@
   .recipe-image {
     box-sizing: border-box;
     height: 15vh;
+    overflow: hidden;
+    min-height: 100px;
+    min-width: 100px;
+
     border: 5px solid var(--bee-red-color);
     border-radius: 10px;
-    overflow: hidden;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100px;
-    min-width: 100px;
   }
-
 </style>

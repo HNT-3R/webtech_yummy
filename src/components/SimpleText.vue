@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="simple-text">
+  <div id="simple-text">
     <h2>
       <slot name="heading"></slot>
     </h2>
@@ -12,7 +12,7 @@
 </template>
 
 <style scoped>
-  .simple-text {
+  #simple-text {
     text-align: left;
     padding: 15px;
   }
