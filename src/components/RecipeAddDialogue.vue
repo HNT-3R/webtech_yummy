@@ -1,67 +1,80 @@
 <script setup>
 
-let opened = ref(false);
+  import {ref} from "vue";
 
-function toggleForm() {
-  console.log(opened);
-  opened.value = !opened.value;
-}
+  // ##### Togglen des Formulars via Button #####
 
-import {ref} from "vue";
+  let opened = ref(false);
 
-const newRecipeName = ref("");
-const newRecipeIngredients = ref("");
-const newRecipeInstructions = ref("");
-const newRecipeNotes = ref("");
-
-const emit = defineEmits(["add-recipe"]);
-
-async function addRecipeButtonFunc() {
-  const newRecipe = { recipeName: newRecipeName.value, ingredients: newRecipeIngredients.value, instructions: newRecipeInstructions.value, notes: newRecipeNotes.value };
-
-  //validate recipe name
-  let recipeNameRegEX = /^[a-zA-Z0-9\s-]{1,128}$/;
-  if (!recipeNameRegEX.test(newRecipe.recipeName)) {
-    alert("Invalid recipe name input!\n" +
-        "Available inputs: Alphanumerics, spaces and dashes.\n" +
-        "Character limit at 128 chars.\n" +
-        "Current input length is: " + newRecipe.recipeName.length + " characters.");
-    return;
+  function toggleForm() {
+    console.log(opened);
+    opened.value = !opened.value;
   }
 
-  //validate ingredients
-  let ingredientsRegEX = /^.{1,1024}$/;
-  if (!ingredientsRegEX.test(newRecipe.ingredients)) {
-    alert("Invalid ingredients input!\n" +
-        "Character limit at 1024 chars.\n" +
-        "Current input length is: " + newRecipe.ingredients.length + " characters.");
-    return;
-  }
 
-  let instructionsRegEX = /^.{1,1024}$/;
-  if (!instructionsRegEX.test(newRecipe.instructions)) {
-    alert("Invalid instructions input!\n" +
-        "Character limit at 1024 chars.\n" +
-        "Current input length is: " + newRecipe.instructions.length + " characters.");
-    return;
-  }
 
-  let notesRegEX = /^.{1,512}$/;
-  if (!notesRegEX.test(newRecipe.notes)) {
-    alert("Invalid notes input!\n" +
-        "Character limit at 512 chars.\n" +
-        "Current input length is: " + newRecipe.notes.length + " characters.");
-    return;
-  }
+  // ##### Rezepte hinzufügen und RegEX prüfen #####
 
-  emit("add-recipe", newRecipe);
+  const newRecipeName = ref("");
+  const newRecipeIngredients = ref("");
+  const newRecipeInstructions = ref("");
+  const newRecipeNotes = ref("");
 
-  //setze die neuen Rezeptdaten zurück für das nächste Rezept
-  newRecipeName.value = "";
-  newRecipeIngredients.value = "";
-  newRecipeInstructions.value = "";
-  newRecipeNotes.value = "";
-}
+  const emit = defineEmits(["add-recipe"]);
+
+  async function addRecipeButtonFunc() {
+
+    //neues Rezept mit den neuen Werten initialisieren
+    const newRecipe = { recipeName: newRecipeName.value, ingredients: newRecipeIngredients.value, instructions: newRecipeInstructions.value, notes: newRecipeNotes.value };
+    console.log(newRecipe);
+
+    //validiere Rezeptnamen
+    let recipeNameRegEX = /^[a-zA-Z0-9\s-]{1,128}$/;
+    if (!recipeNameRegEX.test(newRecipe.recipeName)) {
+      alert("Invalid recipe name input!\n" +
+          "Available inputs: Alphanumerics, spaces and dashes.\n" +
+          "Character limit at 128 chars.\n" +
+          "Current input length is: " + newRecipe.recipeName.length + " characters.");
+      return;
+    }
+
+    //validiere Zutaten
+    let ingredientsRegEX = /^.{1,1024}$/;
+    if (!ingredientsRegEX.test(newRecipe.ingredients)) {
+      alert("Invalid ingredients input!\n" +
+          "Character limit at 1024 chars.\n" +
+          "Current input length is: " + newRecipe.ingredients.length + " characters.");
+      return;
+    }
+
+    //validiere Anweisungen/Vorgehen
+    let instructionsRegEX = /^.{1,1024}$/;
+    if (!instructionsRegEX.test(newRecipe.instructions)) {
+      alert("Invalid instructions input!\n" +
+          "Character limit at 1024 chars.\n" +
+          "Current input length is: " + newRecipe.instructions.length + " characters.");
+      return;
+    }
+
+    //validiere Notizen
+    let notesRegEX = /^.{1,512}$/;
+    if (!notesRegEX.test(newRecipe.notes)) {
+      alert("Invalid notes input!\n" +
+          "Character limit at 512 chars.\n" +
+          "Current input length is: " + newRecipe.notes.length + " characters.");
+      return;
+    }
+
+    //gibt ein Event "add-recipe" zurück, dass von den Views genutzt werden können um die neuen Daten zu erhalten
+    emit("add-recipe", newRecipe);
+
+    //setze die neuen Rezeptdaten zurück für das nächste Rezept
+    newRecipeName.value = "";
+    newRecipeIngredients.value = "";
+    newRecipeInstructions.value = "";
+    newRecipeNotes.value = "";
+
+} //ENDE addRecipeButtonFunc
 
 </script>
 
