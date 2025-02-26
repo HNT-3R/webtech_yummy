@@ -64,7 +64,7 @@ function changeImg (newImage) {
 
     <div>
       <img @mouseover="changeImg(hoveredImg)" @mouseleave="changeImg(unhoveredImg)"
-           id="logo" alt="YB Logo" class="logo" :src="currImg" :style="{ width: isScrolled ? scrolledImgSize : defaultImgSize }" />
+           id="logo" alt="Yumblebee Logo" class="logo" :src="currImg" :style="{ width: isScrolled ? scrolledImgSize : defaultImgSize }" />
     </div>
 
     <div id="rightNavDiv">
@@ -118,7 +118,7 @@ nav {
 }
 
 .navbarItem:hover {
-  background-color: var(--bee-red-color);
+  background-color: var(--bee-red-lightened-color);
   transition-duration: 0.5s;
 }
 
@@ -139,10 +139,21 @@ nav {
   margin-left: auto;
   margin-right: auto;
   transition: all 0.3s ease;
+
+  animation-name: logoHovering;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
 }
 
 #logo:hover {
   cursor: grab;
+}
+
+@keyframes logoHovering {
+  0% {transform: translate(0px, 5px);}
+  50% {transform: translate(0px, -5px);}
+  100% {transform: translate(0px, 5px);}
 }
 
 a:link, a:visited, a:active {

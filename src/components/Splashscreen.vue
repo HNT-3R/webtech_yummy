@@ -17,7 +17,7 @@
 <template>
   <div class="splashscreen">
     <div id="splash-icon">
-      <img id="logo" alt="Vue logo" class="logo" src="../assets/img/YumBlebeeLogo.png" width="200" height="200" />
+      <img id="logo" alt="Yumblebee logo" class="logo" src="../assets/img/YumBlebeeLogo.png" width="200" height="200" />
     </div>
     <div id="splash-text">
       Loading recipe data...
@@ -41,6 +41,17 @@
 
   #splash-text {
     font-size: x-large;
+  }
+
+  #logo {
+    animation-name: spin-animation;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes spin-animation {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
   }
 
 </style>

@@ -1,5 +1,12 @@
 <script setup>
 
+let opened = ref(false);
+
+function toggleForm() {
+  console.log(opened);
+  opened.value = !opened.value;
+}
+
 import {ref} from "vue";
 
 const newRecipeName = ref("");
@@ -59,32 +66,34 @@ async function addRecipeButtonFunc() {
 </script>
 
 <template>
-  <div class="recipe-add-dialogue">
-
-    <form id="add-form" @submit.prevent="addRecipeButtonFunc">
-      <h2>Add Recipe</h2>
-      <div class="form-group">
-        <p>
-          Name <br>
-          <input v-model="newRecipeName" placeholder="Recipe name" required />
-        </p>
-        <p>
-          Ingredients <br>
-          <textarea v-model="newRecipeIngredients" placeholder="Ingredients" required />
-        </p>
-      </div>
-      <div class="form-group">
-        <p>
-          Instructions <br>
-          <textarea v-model="newRecipeInstructions" placeholder="Instructions" required />
-        </p>
-        <p>
-          Notes <br>
-          <textarea v-model="newRecipeNotes" placeholder="Notes" />
-        </p>
-      </div>
-      <button type="submit">Add Recipe</button>
-    </form>
+  <div id="outer-div">
+    <button type="button" @click="toggleForm()" id="toggle-button">Open Recipe Add Menu</button>
+    <div class="recipe-add-dialogue" v-if="opened">
+      <form id="add-form" @submit.prevent="addRecipeButtonFunc">
+        <h2>Add Recipe</h2>
+        <div class="form-group">
+          <p>
+            Name <br>
+            <input v-model="newRecipeName" placeholder="Recipe name" required />
+          </p>
+          <p>
+            Ingredients <br>
+            <textarea v-model="newRecipeIngredients" placeholder="Ingredients" required />
+          </p>
+        </div>
+        <div class="form-group">
+          <p>
+            Instructions <br>
+            <textarea v-model="newRecipeInstructions" placeholder="Instructions" required />
+          </p>
+          <p>
+            Notes <br>
+            <textarea v-model="newRecipeNotes" placeholder="Notes" />
+          </p>
+        </div>
+        <button type="submit">Add Recipe</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -111,11 +120,22 @@ async function addRecipeButtonFunc() {
     width: 15%;
   }
 
+  #toggle-button {
+    width: 200px;
+    height: 40px;
+    border-color: var(--bee-yellow-color);
+  }
+
   input, textarea {
     background-image: linear-gradient(var(--back-color), var(--back-color-light));
     border: 2px solid var(--bee-red-color);
     border-radius: 10px;
     padding: 5px;
+  }
+
+  #outer-div {
+    display: grid;
+    grid-gap: 10px;
   }
 
 </style>

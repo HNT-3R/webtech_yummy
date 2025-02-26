@@ -2,8 +2,14 @@
 
 import {ref} from "vue";
 
-const recipeName = ref("");
+let opened = ref(false);
 
+function toggleForm() {
+  console.log(opened);
+  opened.value = !opened.value;
+}
+
+const recipeName = ref("");
 const emit = defineEmits(["delete-recipe"]);
 
 async function delRecipeButtonFunc() {
@@ -16,15 +22,18 @@ async function delRecipeButtonFunc() {
 </script>
 
 <template>
-  <div class="recipe-del-dialogue">
-    <form id="del-form" @submit.prevent="delRecipeButtonFunc">
-      <h2>Delete Recipe</h2>
-      <p>
-        Name <br>
-        <input v-model="recipeName" placeholder="Recipe name" required />
-      </p>
-      <button type="submit">Delete Recipe</button>
-    </form>
+  <div id="outer-div">
+    <button type="button" @click="toggleForm()" id="toggle-button">Open Recipe Delete Menu</button>
+    <div class="recipe-del-dialogue" v-if="opened">
+      <form id="del-form" @submit.prevent="delRecipeButtonFunc">
+        <h2>Delete Recipe</h2>
+        <p>
+          Name <br>
+          <input v-model="recipeName" placeholder="Recipe name" required />
+        </p>
+        <button type="submit">Delete Recipe</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -51,10 +60,21 @@ button {
   width: 20%;
 }
 
+#toggle-button {
+  width: 200px;
+  height: 40px;
+}
+
 input {
   background-image: linear-gradient(var(--back-color), var(--back-color-light));
   border: 2px solid var(--bee-red-color);
   border-radius: 10px;
   padding: 5px;
 }
+
+#outer-div {
+  display: grid;
+  grid-gap: 10px;
+}
+
 </style>
