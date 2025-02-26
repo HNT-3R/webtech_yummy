@@ -65,6 +65,7 @@
       return;
     }
 
+
     //gibt ein Event "add-recipe" zurück, dass von den Views genutzt werden können um die neuen Daten zu erhalten
     emit("add-recipe", newRecipe);
 
